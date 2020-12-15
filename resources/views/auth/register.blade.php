@@ -1,59 +1,48 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-auth-layout title="Daftar" html-body-class="page-register-v2">
+    <x-slot name="css">
+        <link rel="stylesheet" href="{{ asset('public') }}/assets/examples/css/pages/register-v2.css">
+        <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/formvalidation/formValidation.css">
+        <link rel="stylesheet" href="{{ asset('public') }}/assets/examples/css/forms/validation.css">
+    </x-slot>
+    <x-slot name="js">
+        <script src="{{ asset('public') }}/assets/js/components/jquery-placeholder.js"></script>
+        <script src="{{ asset('public') }}/assets/js/components/animate-list.js"></script>
+    </x-slot>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div class="page-register-main">
+        <div class="brand visible-xs">
+            <img class="brand-img" src="{{ asset('public') }}/assets/images/logo-blue@2x.png" alt="...">
+            <h3 class="brand-text font-size-40">{{ config('app.name') }}</h3>
+        </div>
+        <h3 class="font-size-24">Daftar</h3>
+        <p>Silahkan mendaftarkan diri Anda apabila belum memiliki akun.</p>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="post" role="form" action="{{ route('register') }}">
             @csrf
+            <x-validation-errors :values="$errors" class="alert alert-danger"></x-validation-errors>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <div class="form-group">
+                <label class="sr-only" for="name">Nama</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Nama">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password_confirmation">Retype Password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Konfirmasi Password">
             </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
+            <button type="submit" class="btn btn-primary btn-block">Daftar Sekarang</button>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+
+        <p>Sudah mendaftar sebelumnya? Silahkan <a href="{{ route('login') }}">Login</a></p>
+
+        @include('_layouts.auth.footer')
+    </div>
+</x-auth-layout>
