@@ -122,6 +122,12 @@
 
     <script src="{{ asset('public') }}/assets/examples/js/dashboard/v1.js"></script>
 
+    <form action="{{ route('logout') }}" id="frmLogout" method="POST">@csrf</form>
+    <script type="text/javascript">
+        function logout() {
+            $('#frmLogout').submit();
+        }
+    </script>
 
 </body>
 

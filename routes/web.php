@@ -1,7 +1,18 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ReturnController;
+use App\Http\Controllers\StockOpnameController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\UsageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +33,63 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
-Route::middleware(['auth'])->group(function () {
-    Route::prefix('dashboard')->group(function () {
-        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboard'], function () {
+    Route::get('', [DashboardController::class, 'index']);
+
+    // PROFILE
+    Route::group(['as' => '.profile'], function () {
+        Route::get('change-password', [ProfileController::class, 'showChangePasswordForm'])->name('.change-password-form');
+        Route::post('change-password', [ProfileController::class, 'changePassword'])->name('.change-password');
+        Route::get('update', [ProfileController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('update', [ProfileController::class, 'update'])->name('.update');
+    });
+
+    // ITEM
+    Route::group(['prefix' => 'items', 'as' => '.items'], function () {
+        Route::get('', [ItemController::class, 'index']);
+        Route::get('showCreateForm', [ItemController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('showUpdateForm/{id}', [ItemController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [ItemController::class, 'create'])->name('.create');
+        Route::post('update/{id}', [ItemController::class, 'update'])->name('.update');
+        Route::post('delete/{id}', [ItemController::class, 'delete'])->name('.delete');
+    });
+    // UNIT
+    Route::group(['prefix' => 'units', 'as' => '.units'], function () {
+        Route::get('', [UnitController::class, 'index']);
+    });
+    // BRAND
+    Route::group(['prefix' => 'brands', 'as' => '.brands'], function () {
+        Route::get('', [BrandController::class, 'index']);
+    });
+    // CATEGORY
+    Route::group(['prefix' => 'categories', 'as' => '.categories'], function () {
+        Route::get('', [CategoryController::class, 'index']);
+    });
+
+    // STOCK OPNAME
+    Route::group(['prefix' => 'stock-opnames', 'as' => '.stock-opnames'], function () {
+        Route::get('', [StockOpnameController::class, 'index']);
+    });
+    // USAGE
+    Route::group(['prefix' => 'usages', 'as' => '.usages'], function () {
+        Route::get('', [UsageController::class, 'index']);
+    });
+    // RETURN
+    Route::group(['prefix' => 'returns', 'as' => '.returns'], function () {
+        Route::get('', [ReturnController::class, 'index']);
+    });
+    // REQUEST
+    Route::group(['prefix' => 'requests', 'as' => '.requests'], function () {
+        Route::get('', [RequestController::class, 'index']);
+    });
+    // PURCHASE
+    Route::group(['prefix' => 'purchases', 'as' => '.purchases'], function () {
+        Route::get('', [PurchaseController::class, 'index']);
+    });
+
+
+    // APPROVAL
+    Route::group(['prefix' => 'approvals', 'as' => '.approvals'], function () {
+        Route::get('', [ApprovalController::class, 'index']);
     });
 });
