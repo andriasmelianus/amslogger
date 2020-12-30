@@ -26,20 +26,15 @@
     <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/slidepanel/slidePanel.css">
     <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/flag-icon-css/flag-icon.css">
 
-    <!-- Plugins For This Page -->
-    <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/chartist-js/chartist.css">
-    <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
-
     <!-- Page -->
-    <link rel="stylesheet" href="{{ asset('public') }}/assets/css/{{ asset('public') }}/fonts/weather-icons/weather-icons.css">
+    <!-- <link rel="stylesheet" href="{{ asset('public') }}/assets/css/{{ asset('public') }}/fonts/weather-icons/weather-icons.css"> -->
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('public') }}/assets/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="{{ asset('public') }}/assets/fonts/brand-icons/brand-icons.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
-    <!-- Inline -->
-    <link rel="stylesheet" href="{{ asset('public') }}/assets/examples/css/dashboard/v1.css">
+
+    {{ $css ?? '' }}
 
     <!--[if lt IE 9]>
     <script src="{{ asset('public') }}/assets/vendor/html5shiv/html5shiv.min.js"></script>
@@ -90,15 +85,6 @@
     <script src="{{ asset('public') }}/assets/vendor/screenfull/screenfull.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/slidepanel/jquery-slidePanel.js"></script>
 
-    <!-- Plugins For This Page -->
-    <script src="{{ asset('public') }}/assets/vendor/skycons/skycons.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/chartist-js/chartist.min.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
-    <script src="{{ asset('public') }}/assets/vendor/matchheight/jquery.matchHeight-min.js"></script>
-
     <!-- Scripts -->
     <script src="{{ asset('public') }}/assets/js/core.js"></script>
     <script src="{{ asset('public') }}/assets/js/site.js"></script>
@@ -116,11 +102,9 @@
     <script src="{{ asset('public') }}/assets/js/components/slidepanel.js"></script>
     <script src="{{ asset('public') }}/assets/js/components/switchery.js"></script>
 
-    <!-- Scripts For This Page -->
-    <script src="{{ asset('public') }}/assets/js/components/matchheight.js"></script>
-    <script src="{{ asset('public') }}/assets/js/components/jvectormap.js"></script>
-
     <script src="{{ asset('public') }}/assets/examples/js/dashboard/v1.js"></script>
+
+    {{ $js ?? '' }}
 
     <form action="{{ route('logout') }}" id="frmLogout" method="POST">@csrf</form>
     <script type="text/javascript">

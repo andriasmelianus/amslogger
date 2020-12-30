@@ -47,11 +47,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     // ITEM
     Route::group(['prefix' => 'items', 'as' => '.items'], function () {
         Route::get('', [ItemController::class, 'index']);
-        Route::get('showCreateForm', [ItemController::class, 'showCreateForm'])->name('.create-form');
-        Route::get('showUpdateForm/{id}', [ItemController::class, 'showUpdateForm'])->name('.update-form');
+        Route::get('datatables', [ItemController::class, 'datatables'])->name('.datatables');
+        Route::get('create', [ItemController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [ItemController::class, 'showUpdateForm'])->name('.update-form');
         Route::post('create', [ItemController::class, 'create'])->name('.create');
-        Route::post('update/{id}', [ItemController::class, 'update'])->name('.update');
-        Route::post('delete/{id}', [ItemController::class, 'delete'])->name('.delete');
+        Route::post('update', [ItemController::class, 'update'])->name('.update');
+        Route::post('delete', [ItemController::class, 'delete'])->name('.delete');
     });
     // UNIT
     Route::group(['prefix' => 'units', 'as' => '.units'], function () {

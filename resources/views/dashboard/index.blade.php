@@ -1,5 +1,5 @@
 <x-dashboard-layout title="Dashboard">
-    <div class="page">
+    <div class="page animsition">
         <div class="page-content padding-30 container-fluid">
             <div class="row" data-plugin="matchHeight" data-by-row="true">
                 <div class="col-xlg-3 col-md-6">
@@ -63,4 +63,9 @@
             </div>
         </div>
     </div>
+
+    <x-slot name="js">
+        <!-- Inline -->
+        <link rel="stylesheet" href="{{ asset('public') }}/assets/examples/css/dashboard/v1.css">
+    </x-slot>
 </x-dashboard-layout>

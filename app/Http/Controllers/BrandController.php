@@ -61,7 +61,7 @@ class BrandController extends Controller
      * @param Request $request
      * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
     }
 
@@ -71,7 +71,7 @@ class BrandController extends Controller
      * @param Request $request
      * @return void
      */
-    public function delete(Request $request, $id)
+    public function delete(Request $request)
     {
     }
 }

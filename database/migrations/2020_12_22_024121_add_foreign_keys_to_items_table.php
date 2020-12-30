@@ -14,7 +14,7 @@ class AddForeignKeysToItemsTable extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->foreign('brands_id', 'fk_items_brands1')->references('id')->on('brands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('brand_id', 'fk_items_brands1')->references('id')->on('brands')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('category_id', 'fk_items_categories1')->references('id')->on('categories')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign('unit_id', 'fk_items_units')->references('id')->on('units')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });

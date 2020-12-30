@@ -32,7 +32,7 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
     <!-- Page Specific CSS -->
-    {{ $css }}
+    {{ $css ?? '' }}
 
     <!--[if lt IE 9]>
     <script src="{{ asset('public') }}/assets/vendor/html5shiv/html5shiv.min.js"></script>
@@ -110,7 +110,7 @@
     <script src="{{ asset('public') }}/assets/js/components/switchery.js"></script>
 
     <!-- Page Specific JS -->
-    {{ $js }}
+    {{ $js ?? '' }}
 
     <script>
         (function(document, window, $) {
