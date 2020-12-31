@@ -39,7 +39,7 @@
 
                             <div class="form-group @error('name_for_vendor') has-error @enderror">
                                 <label for="name_for_vendor">Penamaan Barang dari Vendor</label>
-                                <input value="{{ old('name_for_vendor') ?? (isset($data) ? $data->name_for_vendor : '') }}" placeholder="Nama Barang" name="name_for_vendor" id="name_for_vendor" class="form-control text-left " type="text">
+                                <input value="{{ old('name_for_vendor') ?? (isset($data) ? $data->name_for_vendor : '') }}" placeholder="Penamaan Barang oleh Vendor" name="name_for_vendor" id="name_for_vendor" class="form-control text-left " type="text">
                                 @error('name_for_vendor')
                                 <span class="help-block" role="alert">
                                     <strong>{{ $message }}</strong>
