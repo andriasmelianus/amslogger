@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Messages;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Item;
@@ -87,9 +88,9 @@ class ItemController extends Controller
         $instance = new Item();
         $instance->fill($request->all());
         if ($instance->save()) {
-            return redirect()->route('dashboard.items');
+            return redirect()->route('dashboard.items')->with(['success-message' => Messages::SAVED]);
         } else {
-            return redirect()->route('dashboard.items');
+            return redirect()->route('dashboard.items')->with(['error-message' => Messages::ERROR_SAVING]);
         }
     }
 
@@ -100,7 +101,12 @@ class ItemController extends Controller
      */
     public function showUpdateForm($id)
     {
-        return view('dashboard.items.input');
+        return view('dashboard.items.input', [
+            'data' => Item::find($id),
+            'units' => Unit::all(),
+            'brands' => Brand::all(),
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -111,6 +117,15 @@ class ItemController extends Controller
      */
     public function update(Request $request)
     {
+        $this->validate($request, $this->rules);
+
+        $instance = Item::find($request->id);
+        $instance->fill($request->all());
+        if ($instance->save()) {
+            return redirect()->route('dashboard.items')->with(['success-message' => Messages::UPDATED]);
+        } else {
+            return redirect()->route('dashboard.items')->with(['error-message' => Messages::ERROR_UPDATING]);
+        }
     }
 
     /**
@@ -121,5 +136,13 @@ class ItemController extends Controller
      */
     public function delete(Request $request)
     {
+        $instance = Item::find($request->id);
+        if ($instance) {
+            if ($instance->delete()) {
+                return redirect()->route('dashboard.items')->with(['success-message' => Messages::DELETED]);
+            } else {
+                return redirect()->route('dashboard.items')->with(['error-message' => Messages::ERROR_DELETING]);
+            }
+        }
     }
 }

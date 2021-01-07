@@ -26,6 +26,8 @@
                     <h3 class="panel-title">Daftar Barang</h3>
                 </header>
                 <div class="panel-body">
+                    <x-alert></x-alert>
+
                     <table id="table1" class="table table-hover dataTable table-striped width-full">
                         <thead>
                             <tr>
@@ -43,9 +45,9 @@
             <!-- End Panel Basic -->
         </div>
     </div>
-    <form id="frmDeleteData" action="{{ route('dashboard.items.delete') }}" method="POST" style="display: none;">
+    <form id="frmDelete" action="{{ route('dashboard.items.delete') }}" method="POST" style="display: none;">
         @csrf
-        <input type="hidden" id="item_id" name="item_id">
+        <input type="hidden" id="id_to_delete" name="id">
     </form>
 
     <x-slot name="js">
@@ -64,8 +66,8 @@
         <script>
             function deleteData(id) {
                 if (confirm('Anda yakin?')) {
-                    $('#item_id').val(id);
-                    $('#frmDeleteData').submit();
+                    $('#id_to_delete').val(id);
+                    $('#frmDelete').submit();
                 }
             }
             let options = {

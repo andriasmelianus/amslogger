@@ -10,7 +10,7 @@ class Item extends BaseItem
 		'name',
 		'vendor_name',
 		'unit_id',
-		'brands_id',
+		'brand_id',
 		'category_id',
 		'description'
 	];
