@@ -14,6 +14,7 @@ use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Item
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $deleted_at
  * 
  * @property Brand|null $brand
  * @property Category|null $category
@@ -38,6 +40,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Item extends Model
 {
+	use SoftDeletes;
 	protected $table = 'items';
 
 	protected $casts = [

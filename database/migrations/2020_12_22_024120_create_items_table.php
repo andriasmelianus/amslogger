@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('category_id')->nullable()->index('fk_items_categories1_idx');
             $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
