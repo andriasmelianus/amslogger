@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Messages;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BrandController extends Controller
 {
+    private $rules;
+
     /**
      * Constructor.
      * 
@@ -13,6 +18,9 @@ class BrandController extends Controller
      */
     public function __construct()
     {
+        $this->rules = [
+            'name' => 'required|min:2|max:32|unique:brands'
+        ];
     }
 
     /**
@@ -23,6 +31,22 @@ class BrandController extends Controller
     public function index()
     {
         return view('dashboard.brands.index');
+    }
+
+    /**
+     * Provide data for datatables component.
+     * 
+     * @return Datatables
+     */
+    public function datatables()
+    {
+        return DataTables::of(Brand::all())
+            ->addColumn('action', function ($row) {
+                return view('dashboard.brands.datatables.action-column', [
+                    'data' => $row
+                ]);
+            })
+            ->make(true);
     }
 
     /**
@@ -43,6 +67,15 @@ class BrandController extends Controller
      */
     public function create(Request $request)
     {
+        $this->validate($request, $this->rules);
+
+        $instance = new Brand();
+        $instance->fill($request->all());
+        if ($instance->save()) {
+            return redirect()->route('dashboard.brands')->with(['success-message' => Messages::SAVED]);
+        } else {
+            return redirect()->route('dashboard.brands')->with(['error-message' => Messages::ERROR_SAVING]);
+        }
     }
 
     /**
@@ -52,7 +85,9 @@ class BrandController extends Controller
      */
     public function showUpdateForm($id)
     {
-        return view('dashboard.brands.input');
+        return view('dashboard.brands.input', [
+            'data' => Brand::find($id)
+        ]);
     }
 
     /**
@@ -63,6 +98,15 @@ class BrandController extends Controller
      */
     public function update(Request $request)
     {
+        $this->validate($request, $this->rules);
+
+        $instance = Brand::find($request->id);
+        $instance->fill($request->all());
+        if ($instance->save()) {
+            return redirect()->route('dashboard.brands')->with(['success-message' => Messages::UPDATED]);
+        } else {
+            return redirect()->route('dashboard.brands')->with(['error-message' => Messages::ERROR_UPDATING]);
+        }
     }
 
     /**
@@ -73,5 +117,13 @@ class BrandController extends Controller
      */
     public function delete(Request $request)
     {
+        $instance = Brand::find($request->id);
+        if ($instance) {
+            if ($instance->delete()) {
+                return redirect()->route('dashboard.brands')->with(['success-message' => Messages::DELETED]);
+            } else {
+                return redirect()->route('dashboard.brands')->with(['error-message' => Messages::ERROR_DELETING]);
+            }
+        }
     }
 }

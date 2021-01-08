@@ -67,6 +67,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     // BRAND
     Route::group(['prefix' => 'brands', 'as' => '.brands'], function () {
         Route::get('', [BrandController::class, 'index']);
+        Route::get('datatables', [BrandController::class, 'datatables'])->name('.datatables');
+        Route::get('create', [BrandController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [BrandController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [BrandController::class, 'create'])->name('.create');
+        Route::post('update', [BrandController::class, 'update'])->name('.update');
+        Route::post('delete', [BrandController::class, 'delete'])->name('.delete');
     });
     // CATEGORY
     Route::group(['prefix' => 'categories', 'as' => '.categories'], function () {
