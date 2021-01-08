@@ -281,6 +281,8 @@ return [
 
         'except' => [
             'migrations',
+            'v_items',
+            'v_logs',
         ],
 
         /*
