@@ -57,6 +57,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     // UNIT
     Route::group(['prefix' => 'units', 'as' => '.units'], function () {
         Route::get('', [UnitController::class, 'index']);
+        Route::get('datatables', [UnitController::class, 'datatables'])->name('.datatables');
+        Route::get('create', [UnitController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [UnitController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [UnitController::class, 'create'])->name('.create');
+        Route::post('update', [UnitController::class, 'update'])->name('.update');
+        Route::post('delete', [UnitController::class, 'delete'])->name('.delete');
     });
     // BRAND
     Route::group(['prefix' => 'brands', 'as' => '.brands'], function () {
