@@ -77,6 +77,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     // CATEGORY
     Route::group(['prefix' => 'categories', 'as' => '.categories'], function () {
         Route::get('', [CategoryController::class, 'index']);
+        Route::get('datatables', [CategoryController::class, 'datatables'])->name('.datatables');
+        Route::get('create', [CategoryController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [CategoryController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [CategoryController::class, 'create'])->name('.create');
+        Route::post('update', [CategoryController::class, 'update'])->name('.update');
+        Route::post('delete', [CategoryController::class, 'delete'])->name('.delete');
     });
 
     // STOCK OPNAME
