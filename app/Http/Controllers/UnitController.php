@@ -20,7 +20,7 @@ class UnitController extends Controller
     public function __construct()
     {
         $this->rules = [
-            'name' => 'required|min:2|max:32'
+            'name' => 'required|min:2|max:32|unique:units'
         ];
     }
 
