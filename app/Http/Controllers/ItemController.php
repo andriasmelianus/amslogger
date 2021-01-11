@@ -10,6 +10,7 @@ use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
 class ItemController extends Controller
@@ -117,7 +118,10 @@ class ItemController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $updateRules = $this->rules;
+        $updateRules['name'] = ['required', 'min:3', 'max:32', Rule::unique('items', 'name')->ignore($request->id)];
+        $updateRules['name_for_vendor'] = ['required', 'min:3', 'max:32', Rule::unique('items', 'name_for_vendor')->ignore($request->id)];
+        $this->validate($request, $updateRules);
 
         $instance = Item::find($request->id);
         $instance->fill($request->all());

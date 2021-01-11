@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Constants\Messages;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
 class BrandController extends Controller
@@ -98,7 +99,9 @@ class BrandController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $updateRules = $this->rules;
+        $updateRules['name'] = ['required', 'min:2', 'max:32', Rule::unique('brands', 'name')->ignore($request->id)];
+        $this->validate($request, $updateRules);
 
         $instance = Brand::find($request->id);
         $instance->fill($request->all());

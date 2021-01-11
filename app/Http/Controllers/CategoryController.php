@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Constants\Messages;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
 class CategoryController extends Controller
@@ -93,7 +94,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $updateRules = $this->rules;
+        $updateRules['name'] = ['required', 'min:2', 'max:32', Rule::unique('categories', 'name')->ignore($request->id)];
+        $this->validate($request, $updateRules);
 
         $instance = Category::find($request->id);
         $instance->fill($request->all());

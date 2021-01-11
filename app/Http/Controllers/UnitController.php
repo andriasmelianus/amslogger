@@ -6,6 +6,7 @@ use App\Constants\Messages;
 use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
 class UnitController extends Controller
@@ -99,7 +100,9 @@ class UnitController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $updateRules = $this->rules;
+        $updateRules['name'] = ['required', 'min:2', 'max:32', Rule::unique('units', 'name')->ignore($request->id)];
+        $this->validate($request, $updateRules);
 
         $instance = Unit::find($request->id);
         $instance->fill($request->all());
