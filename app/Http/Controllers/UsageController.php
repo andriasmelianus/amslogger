@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsageController extends Controller
 {
+    private $rules;
 
     /**
      * Constructor.
@@ -14,6 +17,14 @@ class UsageController extends Controller
      */
     public function __construct()
     {
+        $this->rules = [
+            'transaction_id' => 'required|numeric',
+            'item_id' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'price' => 'nullable|numeric',
+            'user_id_requester' => 'required|numeric',
+            'user_id_approver' => 'nullable|numeric',
+        ];
     }
 
     /**
@@ -24,6 +35,10 @@ class UsageController extends Controller
     public function index()
     {
         return view('dashboard.usages.index');
+    }
+
+    public function datatables()
+    {
     }
 
     /**
