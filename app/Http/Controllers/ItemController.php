@@ -56,6 +56,11 @@ class ItemController extends Controller
                     'data' => $row
                 ]);
             })
+            ->editColumn('description', function ($row) {
+                return view('dashboard.items.datatables.description-column', [
+                    'data' => $row
+                ]);
+            })
             ->editColumn('updated_at', function ($row) {
                 return Carbon::createFromTimeString($row->updated_at)->diffForHumans();
             })
