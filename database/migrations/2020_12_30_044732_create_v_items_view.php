@@ -32,7 +32,8 @@ class CreateVItemsView extends Migration
         FROM items
             LEFT OUTER JOIN units ON(items.unit_id = units.id)
             LEFT OUTER JOIN brands ON(items.brand_id = brands.id)
-            LEFT OUTER JOIN categories ON(items.category_id = categories.id)");
+            LEFT OUTER JOIN categories ON(items.category_id = categories.id)
+        WHERE items.deleted_at IS NULL");
     }
 
     /**
