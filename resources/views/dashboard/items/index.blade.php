@@ -69,7 +69,9 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route("dashboard.items.datatables") }}',
-                order: [],
+                order: [
+                    [5, 'desc']
+                ],
 
                 columns: [{
                     data: 'action',
