@@ -25,19 +25,19 @@ class UserSeeder extends Seeder
                 'role' => User::TYPE_GOD
             ], [
                 'name' => 'Yenni Woro',
-                'email' => 'kaops_surabaya@victoriabank.com',
+                'email' => 'kaops_surabaya@victoriabank.co.id',
                 'email_verified_at' => now(),
                 'password' => Hash::make('secret'),
                 'role' => User::TYPE_APPROVER
             ], [
                 'name' => 'Erli Nornawati',
-                'email' => 'erli.nornawati@victoriabank.com',
+                'email' => 'erli.nornawati@victoriabank.co.id',
                 'email_verified_at' => now(),
                 'password' => Hash::make('secret'),
                 'role' => User::TYPE_APPROVER
             ], [
                 'name' => 'Tjendanadi Suparji',
-                'email' => 'tjendanadi@victoriabank.com',
+                'email' => 'tjendanadi@victoriabank.co.id',
                 'email_verified_at' => now(),
                 'password' => Hash::make('secret'),
                 'role' => User::TYPE_APPROVER
