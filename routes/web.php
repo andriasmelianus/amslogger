@@ -11,6 +11,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\StockOpnameController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UsageController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
         Route::post('create', [ItemController::class, 'create'])->name('.create');
         Route::post('update', [ItemController::class, 'update'])->name('.update');
         Route::post('delete', [ItemController::class, 'delete'])->name('.delete');
+
+        Route::get('search-autocomplete', [ItemController::class, 'searchAutocomplete'])->name('.search-autocomplete');
     });
     // UNIT
     Route::group(['prefix' => 'units', 'as' => '.units'], function () {
@@ -85,25 +88,59 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
         Route::post('delete', [CategoryController::class, 'delete'])->name('.delete');
     });
 
+    // TRANSACTION
+    Route::group(['prefix' => 'transaction', 'as' => '.transactions'], function () {
+        Route::get('', [TransactionController::class, 'index']);
+    });
+
     // STOCK OPNAME
     Route::group(['prefix' => 'stock-opnames', 'as' => '.stock-opnames'], function () {
         Route::get('', [StockOpnameController::class, 'index']);
+        Route::get('create', [StockOpnameController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [StockOpnameController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [StockOpnameController::class, 'create'])->name('.create');
+        Route::post('update', [StockOpnameController::class, 'update'])->name('.update');
+        Route::post('delete', [StockOpnameController::class, 'delete'])->name('.delete');
     });
     // USAGE
     Route::group(['prefix' => 'usages', 'as' => '.usages'], function () {
         Route::get('', [UsageController::class, 'index']);
+        Route::get('datatables', [UsageController::class, 'datatables'])->name('.datatables');
+        Route::get('create', [UsageController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('create-status', [UsageController::class, 'showCreateStatus'])->name('.create-status');
+        Route::get('update/{id}', [UsageController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('addItem', [UsageController::class, 'addItem'])->name('.add-item');
+        Route::post('removeItem', [UsageController::class, 'removeItem'])->name('.remove-item');
+        Route::post('create', [UsageController::class, 'create'])->name('.create');
+        Route::post('update', [UsageController::class, 'update'])->name('.update');
+        Route::post('delete', [UsageController::class, 'delete'])->name('.delete');
     });
     // RETURN
     Route::group(['prefix' => 'returns', 'as' => '.returns'], function () {
         Route::get('', [ReturnController::class, 'index']);
+        Route::get('create', [ReturnController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [ReturnController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [ReturnController::class, 'create'])->name('.create');
+        Route::post('update', [ReturnController::class, 'update'])->name('.update');
+        Route::post('delete', [ReturnController::class, 'delete'])->name('.delete');
     });
     // REQUEST
     Route::group(['prefix' => 'requests', 'as' => '.requests'], function () {
         Route::get('', [RequestController::class, 'index']);
+        Route::get('create', [RequestController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [RequestController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [RequestController::class, 'create'])->name('.create');
+        Route::post('update', [RequestController::class, 'update'])->name('.update');
+        Route::post('delete', [RequestController::class, 'delete'])->name('.delete');
     });
     // PURCHASE
     Route::group(['prefix' => 'purchases', 'as' => '.purchases'], function () {
         Route::get('', [PurchaseController::class, 'index']);
+        Route::get('create', [PurchaseController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('update/{id}', [PurchaseController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('create', [PurchaseController::class, 'create'])->name('.create');
+        Route::post('update', [PurchaseController::class, 'update'])->name('.update');
+        Route::post('delete', [PurchaseController::class, 'delete'])->name('.delete');
     });
 
 

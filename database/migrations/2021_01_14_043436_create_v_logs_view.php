@@ -17,6 +17,7 @@ class CreateVLogsView extends Migration
         DB::statement("CREATE VIEW v_logs AS
         SELECT 
             `logs`.id,
+            `logs`.transaction_id,
             transactions.`type`,
             `logs`.item_id,
             `logs`.quantity,
@@ -26,6 +27,7 @@ class CreateVLogsView extends Migration
             `logs`.`user_id_approver`,
             `logs`.`created_at`,
             `logs`.`updated_at`,
+            `transactions`.`submitted_at`,
             `logs`.`approved_at`,
             `logs`.`declined_at`,
             `logs`.`declined_reason`,

@@ -17,6 +17,7 @@ class CreateVItemsView extends Migration
         DB::statement("CREATE VIEW v_items AS
         SELECT items.id,
             items.`name`,
+            items.`name_for_vendor`,
             items.unit_id,
             units.`name` AS unit_name,
             items.brand_id,

@@ -16,6 +16,13 @@ class Messages
     const ERROR_UPDATING = 'Gagal mengubah data. Hubungi pengembang web.';
     const ERROR_DELETING = 'Gagal menghapus data. Hubungi pengembang web.';
 
+    const ADDED_ITEM = 'Barang telah ditambahkan.';
+    const REMOVED_ITEM = 'Barang telah dihapus.';
+    const ERROR_ADDING_ITEM = 'Gagal menambahkan barang. Hubungi pengembang web.';
+    const ERROR_REMOVING_ITEM = 'Gagal menghapus barang. Hubungi pengembang web.';
+
+    const ITEM_EMPTY = 'Tidak ada barang untuk disimpan.';
+
     /**
      * Constructor.
      * 

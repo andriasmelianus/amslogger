@@ -8,6 +8,7 @@ namespace App\Models\Base;
 
 use App\Models\Log;
 use App\Models\Request;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Collection|Log[] $logs
  * @property Collection|Request[] $requests
+ * @property Collection|Transaction[] $transactions
  *
  * @package App\Models\Base
  */
@@ -46,5 +48,10 @@ class User extends Model
 	public function requests()
 	{
 		return $this->hasMany(Request::class);
+	}
+
+	public function transactions()
+	{
+		return $this->hasMany(Transaction::class);
 	}
 }

@@ -36,6 +36,7 @@
                     </li>
 
                     <li class="site-menu-category">Barang</li>
+                    <!-- Data Induk -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)" data-slug="layout">
                             <i class="site-menu-icon wb-book" aria-hidden="true"></i>
@@ -69,10 +70,11 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- Daftar Transaksi -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)" data-slug="layout">
-                            <i class="site-menu-icon wb-add-file" aria-hidden="true"></i>
-                            <span class="site-menu-title">Transaksi</span>
+                            <i class="site-menu-icon wb-order" aria-hidden="true"></i>
+                            <span class="site-menu-title">Daftar Transaksi</span>
                             <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
@@ -102,6 +104,46 @@
                             </li>
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.purchases') }}" data-slug="layout-menu-expended">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title">Pembelian</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Transaksi -->
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)" data-slug="layout">
+                            <i class="site-menu-icon wb-add-file" aria-hidden="true"></i>
+                            <span class="site-menu-title">Transaksi</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.stock-opnames.create-form') }}" data-slug="layout-menu-collapsed">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title">Stok Opname</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.usages.create-form') }}" data-slug="layout-menu-expended">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title">Penggunaan</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.returns.create-form') }}" data-slug="layout-menu-expended">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title">Pengembalian</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.requests.create-form') }}" data-slug="layout-menu-expended">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title">Permintaan</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.purchases.create-form') }}" data-slug="layout-menu-expended">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Pembelian</span>
                                 </a>

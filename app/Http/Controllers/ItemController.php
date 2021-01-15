@@ -154,4 +154,26 @@ class ItemController extends Controller
             }
         }
     }
+
+    /**
+     * Provide autocomplete item.
+     * 
+     * @param Request $request
+     * @return array
+     */
+    public function searchAutocomplete(Request $request)
+    {
+        $categoryId = $request->get('category_id') ?? Category::first()->id;
+        $data = DB::table('v_items')
+            // ->select(DB::raw('id AS data, name AS value'))
+            ->where('category_id', $categoryId)
+            ->where(function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->get('query') . '%')
+                    ->orWhere('name_for_vendor', 'LIKE', '%' . $request->get('query') . '%');
+            });
+
+        $suggestions = [];
+        $suggestions['suggestions'] = $data->get();
+        return response()->json($suggestions);
+    }
 }
