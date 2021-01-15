@@ -8,7 +8,7 @@ class Item extends BaseItem
 {
 	protected $fillable = [
 		'name',
-		'vendor_name',
+		'name_for_vendor',
 		'unit_id',
 		'brand_id',
 		'category_id',
