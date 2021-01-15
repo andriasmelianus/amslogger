@@ -137,6 +137,8 @@
                 <?php $categoryIdValue = App\Andrias\SelectHelper::initValue(old('category_id'), (isset($data) ? $data->category_id : '')); ?>
                 $('#category_id').val('{{ $categoryIdValue }}');
                 $('#category_id').change();
+
+                $('#name').focus();
             });
         </script>
     </x-slot>
