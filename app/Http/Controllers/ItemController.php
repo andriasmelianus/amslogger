@@ -94,7 +94,7 @@ class ItemController extends Controller
         $instance = new Item();
         $instance->fill($request->all());
         if ($instance->save()) {
-            return redirect()->route('dashboard.items')->with(['success-message' => Messages::SAVED]);
+            return redirect()->route('dashboard.items.create-form')->with(['success-message' => Messages::SAVED]);
         } else {
             return redirect()->route('dashboard.items')->with(['error-message' => Messages::ERROR_SAVING]);
         }

@@ -19,6 +19,8 @@
                     <h3 class="panel-title">Input Data Barang</h3>
                 </div>
                 <div class="panel-body container-fluid">
+                    <x-alert></x-alert>
+
                     <!-- FORM START -->
                     <form action="{{ isset($data) ? route('dashboard.items.update') : route('dashboard.items.create') }}" method="POST" class="container">
                         <div class="row">
