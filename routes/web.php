@@ -97,7 +97,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     Route::group(['prefix' => 'stock-opnames', 'as' => '.stock-opnames'], function () {
         Route::get('', [StockOpnameController::class, 'index']);
         Route::get('create', [StockOpnameController::class, 'showCreateForm'])->name('.create-form');
+        Route::get('print-form', [StockOpnameController::class, 'printForm'])->name('.print-form');
+        Route::get('create-status', [StockOpnameController::class, 'showCreateStatus'])->name('.create-status');
         Route::get('update/{id}', [StockOpnameController::class, 'showUpdateForm'])->name('.update-form');
+        Route::post('add-item', [StockOpnameController::class, 'addItem'])->name('.add-item');
+        Route::post('remove-item', [StockOpnameController::class, 'removeItem'])->name('.remove-item');
         Route::post('create', [StockOpnameController::class, 'create'])->name('.create');
         Route::post('update', [StockOpnameController::class, 'update'])->name('.update');
         Route::post('delete', [StockOpnameController::class, 'delete'])->name('.delete');
@@ -109,8 +113,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
         Route::get('create', [UsageController::class, 'showCreateForm'])->name('.create-form');
         Route::get('create-status', [UsageController::class, 'showCreateStatus'])->name('.create-status');
         Route::get('update/{id}', [UsageController::class, 'showUpdateForm'])->name('.update-form');
-        Route::post('addItem', [UsageController::class, 'addItem'])->name('.add-item');
-        Route::post('removeItem', [UsageController::class, 'removeItem'])->name('.remove-item');
+        Route::post('add-item', [UsageController::class, 'addItem'])->name('.add-item');
+        Route::post('remove-item', [UsageController::class, 'removeItem'])->name('.remove-item');
         Route::post('create', [UsageController::class, 'create'])->name('.create');
         Route::post('update', [UsageController::class, 'update'])->name('.update');
         Route::post('delete', [UsageController::class, 'delete'])->name('.delete');
