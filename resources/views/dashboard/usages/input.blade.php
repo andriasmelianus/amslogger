@@ -137,6 +137,8 @@
         <script src="{{ asset('public') }}/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
         <script>
             $(function() {
+                $('#name').focus();
+
                 $('input[type=radio][name=category_id]').change(function() {
                     let v_category_id = this.value;
                     $('.autocomplete').autocomplete().setOptions({

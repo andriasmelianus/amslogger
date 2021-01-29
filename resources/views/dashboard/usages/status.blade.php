@@ -19,6 +19,7 @@
                     </div>
 
                     <div class="alert alert-success" role="alert">
+                        <h4>Penggunaan #{{ $data->id }}</h4>
                         Berhasil disubmit pada: {{ $data->submitted_at->format('d F Y H:i') }}
                     </div>
 
