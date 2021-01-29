@@ -152,6 +152,16 @@
                     </li>
 
                     <li class="site-menu-item">
+                        <a href="{{ route('dashboard.usages.create-form') }}">
+                            <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
+                            <span class="site-menu-title">Penggunaan</span>
+                            <!-- <div class="site-menu-badge">
+                                <span class="badge badge-success">2</span>
+                            </div> -->
+                        </a>
+                    </li>
+
+                    <li class="site-menu-item">
                         <a href="{{ route('dashboard.approvals') }}">
                             <i class="site-menu-icon wb-check" aria-hidden="true"></i>
                             <span class="site-menu-title">Persetujuan</span>
