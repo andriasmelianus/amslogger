@@ -36,6 +36,7 @@
                     </li>
 
                     <li class="site-menu-category">Barang</li>
+                    @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                     <!-- Data Induk -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)" data-slug="layout">
@@ -70,20 +71,23 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Daftar Transaksi -->
+                    @endif
+                    <!-- Daftar Transaksi Saya -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)" data-slug="layout">
                             <i class="site-menu-icon wb-order" aria-hidden="true"></i>
-                            <span class="site-menu-title">Daftar Transaksi</span>
+                            <span class="site-menu-title">Transaksi Saya</span>
                             <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
+                            @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.stock-opnames') }}" data-slug="layout-menu-collapsed">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Stok Opname</span>
                                 </a>
                             </li>
+                            @endif
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.usages') }}" data-slug="layout-menu-expended">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
@@ -102,12 +106,14 @@
                                     <span class="site-menu-title">Permintaan</span>
                                 </a>
                             </li>
+                            @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.purchases') }}" data-slug="layout-menu-expended">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Pembelian</span>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </li>
                     <!-- Transaksi -->
@@ -118,12 +124,14 @@
                             <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
+                            @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.stock-opnames.create-form') }}" data-slug="layout-menu-collapsed">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Stok Opname</span>
                                 </a>
                             </li>
+                            @endif
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.usages.create-form') }}" data-slug="layout-menu-expended">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
@@ -142,12 +150,14 @@
                                     <span class="site-menu-title">Permintaan</span>
                                 </a>
                             </li>
+                            @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                             <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ route('dashboard.purchases.create-form') }}" data-slug="layout-menu-expended">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Pembelian</span>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </li>
 
@@ -161,6 +171,7 @@
                         </a>
                     </li>
 
+                    @if(Auth::user()->role == App\Constants\User::TYPE_APPROVER)
                     <li class="site-menu-item">
                         <a href="{{ route('dashboard.approvals') }}">
                             <i class="site-menu-icon wb-check" aria-hidden="true"></i>
@@ -170,7 +181,9 @@
                             </div> -->
                         </a>
                     </li>
+                    @endif
 
+                    @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
                     <li class="site-menu-category">Rekapitulasi</li>
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)" data-slug="layout">
@@ -193,7 +206,7 @@
                             </li>
                         </ul>
                     </li>
-
+                    @endif
                 </ul>
 
                 <div class="site-menubar-section">
