@@ -87,6 +87,7 @@ class StockOpnameController extends Controller
         ]);
 
         return redirect()->back()->with([
+            'category_id' => $request->category_id,
             'success-message' => Messages::ADDED_ITEM
         ]);
     }
