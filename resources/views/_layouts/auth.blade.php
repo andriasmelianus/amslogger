@@ -29,7 +29,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('public') }}/assets/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="{{ asset('public') }}/assets/fonts/brand-icons/brand-icons.min.css">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'> -->
 
     <!-- Page Specific CSS -->
     {{ $css ?? '' }}
