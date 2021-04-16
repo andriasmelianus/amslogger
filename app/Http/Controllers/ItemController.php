@@ -124,8 +124,8 @@ class ItemController extends Controller
     public function update(Request $request)
     {
         $updateRules = $this->rules;
-        $updateRules['name'] = ['required', 'min:3', 'max:32', Rule::unique('items', 'name')->ignore($request->id)];
-        $updateRules['name_for_vendor'] = ['required', 'min:3', 'max:32', Rule::unique('items', 'name_for_vendor')->ignore($request->id)];
+        $updateRules['name'] = ['required', 'min:3', 'max:64', Rule::unique('items', 'name')->ignore($request->id)];
+        $updateRules['name_for_vendor'] = ['required', 'min:3', 'max:64', Rule::unique('items', 'name_for_vendor')->ignore($request->id)];
         $this->validate($request, $updateRules);
 
         $instance = Item::find($request->id);
