@@ -21,6 +21,7 @@ class UnitSeeder extends Seeder
             ['id' => 4, 'name' => 'pad'],
             ['id' => 5, 'name' => 'botol'],
             ['id' => 6, 'name' => 'rim'],
+            ['id' => 7, 'name' => 'buku'],
         ]);
     }
 }
