@@ -25,8 +25,8 @@ class ItemController extends Controller
     public function __construct()
     {
         $this->rules = [
-            'name' => 'required|min:3|max:32|unique:items,name',
-            'name_for_vendor' => 'required|min:3|max:32|unique:items,name_for_vendor',
+            'name' => 'required|min:3|max:64|unique:items,name',
+            'name_for_vendor' => 'required|min:3|max:64|unique:items,name_for_vendor',
             'unit_id' => 'nullable|numeric',
             'brand_id' => 'nullable|numeric',
             'category_id' => 'nullable|numeric',
