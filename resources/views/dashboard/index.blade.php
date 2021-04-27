@@ -1,6 +1,17 @@
 <x-dashboard-layout title="Dashboard">
     <div class="page animsition">
         <div class="page-content padding-30 container-fluid">
+            @if(Auth::user()->role == App\Constants\User::TYPE_GOD)
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+                <div class="col-xlg-3 col-md-6">
+                    <a href="{{ route('dashboard.report.logs') }}" class="btn btn-primary">Running Logs</a>
+                </div>
+                <div class="col-xlg-3 col-md-6">
+                </div>
+            </div>
+            @endif
+
+
             <div class="row" data-plugin="matchHeight" data-by-row="true">
                 <div class="col-xlg-3 col-md-6">
                     <!-- Panel Watchlist -->
