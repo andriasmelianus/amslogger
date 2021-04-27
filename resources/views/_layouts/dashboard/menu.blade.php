@@ -193,6 +193,12 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ route('dashboard.report.logs') }}" data-slug="layout-menu-collapsed">
+                                    <i class="site-menu-icon " aria-hidden="true"></i>
+                                    <span class="site-menu-title"># Logs #</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="layouts/menu-collapsed.html" data-slug="layout-menu-collapsed">
                                     <i class="site-menu-icon " aria-hidden="true"></i>
                                     <span class="site-menu-title">Stok Opname</span>

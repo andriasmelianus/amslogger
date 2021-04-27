@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LogsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RequestController;
@@ -151,5 +152,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboar
     // APPROVAL
     Route::group(['prefix' => 'approvals', 'as' => '.approvals'], function () {
         Route::get('', [ApprovalController::class, 'index']);
+    });
+
+
+    // REPORTING
+    Route::group(['prefix' => 'report', 'as' => '.report'], function () {
+        Route::group(['prefix' => 'logs', 'as' => '.logs'], function () {
+            Route::get('', [LogsController::class, 'index']);
+            Route::get('datatables', [LogsController::class, 'datatables'])->name('.datatables');
+        });
     });
 });
